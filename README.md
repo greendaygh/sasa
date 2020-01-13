@@ -69,5 +69,8 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - class: part
 
 
-
+## python에서 naming 규칙 
+- class names
+- function names
+- variable names
 
