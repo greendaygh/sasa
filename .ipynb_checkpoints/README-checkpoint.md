@@ -11,14 +11,15 @@
 ## root 디렉토리 c:\kribb 만들기 
 
 ## 실행 
-jupyter lab --ip=0.0.0.0 --notebook-dir="c:\\kribb\\"
+- jupyter lab --ip=0.0.0.0 --notebook-dir="c:\\kribb\\"
 
 ## github 저장소 만들기 
-https://github.com/greendaygh/sasa.git
+- https://github.com/greendaygh/sasa.git
 
 ## git 설치
 
 ## 로컬 저장소와 github 저장소 연결
+```
 PS C:\kribb\sasa> echo "# sasa project" >> README.md
 PS C:\kribb\sasa> git init
 Initialized empty Git repository in C:/kribb/sasa/.git/
@@ -29,9 +30,11 @@ PS C:\kribb\sasa> git commit -m "init"
  create mode 100644 README.md
 PS C:\kribb\sasa> git remote add origin https://github.com/greendaygh/sasa.git
 PS C:\kribb\sasa> git push -u origin master
-
+```
 
 ## git data 받아오기
+```
 git clone https://github.com/greendaygh/sasa
+```
 
 ## project directory 
