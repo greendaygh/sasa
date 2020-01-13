@@ -37,4 +37,37 @@ PS C:\kribb\sasa> git push -u origin master
 git clone https://github.com/greendaygh/sasa
 ```
 
-## project directory 
+## anaconda에 flask framework 설치하기 
+https://anaconda.org/anaconda/flask
+
+
+## flask 예제 실행
+https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application
+
+
+## Q1
+- http://127.0.0.1:5000/my/ 라고 브라우저에 입력하면 "you" 출력
+
+## python 문법 실습
+```
+from flask import myfunction 
+myfunction(~~~)
+flask::myfunction(~~~)
+```
+
+
+##  튜토리얼 예제 실행
+```
+https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC1-%EC%8B%A4%EC%8A%B5-20191219.ipynb
+```
+- 파일 읽기 쓰기 전까지 코드 실행, 이해 노력
+
+
+## 클래스 만들기
+
+- class: circuit 
+- class: part
+
+
+
+
