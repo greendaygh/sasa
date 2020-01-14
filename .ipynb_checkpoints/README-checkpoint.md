@@ -81,7 +81,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 ## 클래스 만들기
 - class: circuit 
 - class: part
-
+- https://github.com/greendaygh/sasa/blob/master/excercies20200114.ipynb
 
 ## python에서 naming 규칙 
 - https://ruriro.tistory.com/11
