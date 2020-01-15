@@ -108,3 +108,34 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 ## biopython 이용한 그래프 그리는 방법
 - Chapter 17  Graphics including GenomeDiagram
 
+
+# 2020 01 15
+
+- 명령프롬프트 창 2개 띄우기 (jupyter lab, flask)
+- flask app structure & run 
+- template randering  
+- html 값 주고 받기 
+ - GET / POST 방식 차이점 
+- flask 이용한 html rendering 기술 
+
+## 현우
+- Part 입력, 출력, (삭제, 편집)
+ - 파일에 입력 후 list 출력 
+ 
+- Part 조합으로 Circuit 제작
+ - part 저장 시 random number (time) 같이 저장
+ - 리스트에서 part 선택 후 
+ - circuit 정보 저장용 파일 
+
+## 용환
+- Sequence 
+ - alignment 
+ - visualization
+- biopython에서 part, circiut 서열과 위치 정보로 그래프 그리기 
+ 
+
+## 태웅
+- modeling
+- part/circuit class에 정량적 값 저장할 변수 추가
+- circuit 선택 후 버튼 누르면 시뮬레이션 실행
+- 그래프 출력

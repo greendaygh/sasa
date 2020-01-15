@@ -1,0 +1,15 @@
+Name promoter Sequence
+Name promoter Sequence
+Name promoter Sequence
+Name promoter Sequence
+Name promoter Sequence
+Name promoter Sequence
+Name rbs Sequence
+Name cds Sequence
+Name promoter 
+part1 promoter ATGC
+Part2 rbs GGG
+Part3 cds TTT
+Name promoter Sequence
+Part4 terminator AAA
+Part4 terminator AAA

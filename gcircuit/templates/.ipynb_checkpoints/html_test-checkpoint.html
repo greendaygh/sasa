@@ -1,0 +1,23 @@
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>11HTML form test</title>
+    </head>
+    
+    <body>
+        <form action="http://127.0.0.1:5000/result" method="post">
+            <input type="text" name="name" value="Name" onfocus="this.value=''"><br>
+            <select name="type">
+              <option value="promoter">Promoter</option>
+              <option value="rbs">RBS</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="cds">CDS</option>
+              <option value="terminator">Terminator</option>
+            </select><br>
+            <input type="text" name="sequence" value="Sequence" onfocus="this.value=''"><br>
+            <input type="submit" value="send">
+        </form>
+    result.name:{{result_name}}
+    </body>
+</html>
+
