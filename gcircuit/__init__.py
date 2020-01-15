@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
+
+##Circuit Part
 class Part:
     def __init__(self, id, seq, name, type) :
         self.id= id
@@ -12,6 +14,8 @@ class Part:
         print(self.seq)
     def show_location(self):
         print(self.location)
+        
+## Circuit Class        
 class Circuit:
     def __init__(self, id, name, type):
         self.id=id
@@ -35,7 +39,7 @@ class Circuit:
                 p.location = l
                 l+=len(p.seq)
                 
-                
+'''                
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -52,23 +56,21 @@ def grape_from_html():
 def post():
     value = request.form['id']
     return value
+'''
 
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
 
+#카운트하는 html 렌더링
+
 @app.route('/count')
-def count_A_from_html():
+def count_from_html():
     return render_template("count.html")
+
+#염기 서열 카운팅
 
 @app.route('/length', methods=['post'])
 def count_Length():
     value = request.form['l_id']
     my_dna=Seq(value)
     return "Number of base pairs: "+str(len(my_dna))+"\n"+"Number of Adenine: "+str(my_dna.count("A"))+"\n"+"Number of Thymine: "+str(my_dna.count("T"))+"\n"+"Number of Guanine: "+str(my_dna.count("G"))+"\n"+"Number of Citricine: "+str(my_dna.count("C"))
-
-@app.route('/idparts', methods=['post'])
-def count_Length():
-    
-    value = request.form['p_id']
-    my_part=Seq(value)
-    return 
