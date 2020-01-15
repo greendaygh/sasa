@@ -1,4 +1,4 @@
-# 2020. 01. 13
+# ============= 2020. 01. 13
 
 ## 개발 환경 
 ```
@@ -76,7 +76,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - 파일 읽기 쓰기 전까지 코드 실행, 이해 노력
 
 
-# 2020. 01. 14
+# ============== 2020. 01. 14 
 
 ## 클래스 만들기
 - class: circuit 
@@ -109,33 +109,37 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - Chapter 17  Graphics including GenomeDiagram
 
 
-# 2020 01 15
+# ============= 2020 01 15
 
-- 명령프롬프트 창 2개 띄우기 (jupyter lab, flask)
+- 시작할 때 명령프롬프트 창 2개 띄우기 (jupyter lab, flask)
 - flask app structure & run 
-- template randering  
-- html 값 주고 받기 
- - GET / POST 방식 차이점 
 - flask 이용한 html rendering 기술 
+- html 값 주고 받기 
+  - GET / POST 방식 차이점 
 
-## 현우
+## 현우 (flask)
 - Part 입력, 출력, (삭제, 편집)
- - 파일에 입력 후 list 출력 
- 
+  - 파일에 입력 후 list 출력 
 - Part 조합으로 Circuit 제작
- - part 저장 시 random number (time) 같이 저장
- - 리스트에서 part 선택 후 
- - circuit 정보 저장용 파일 
+  - part 정보 저장 시 index 같이 저장
+  - checkbox 이용 리스트에서 part 선택 후 조합 전략
+  - circuit 정보 파일 저장
 
-## 용환
+## 용환 (biopython)
 - Sequence 
- - alignment 
- - visualization
+  - alignment 
+  - visualization
 - biopython에서 part, circiut 서열과 위치 정보로 그래프 그리기 
  
 
-## 태웅
-- modeling (odeint 함수 사용법)
+## 태웅 (dynamics modeling)
+- modeling (odeint 함수이용)
+  - x: the number of mRNAs, y: the number of proteins
+  - dx/dt = a - bx
+  - dy/dt = cx - dy
 - part/circuit class에 정량적 값 저장할 변수 추가
 - circuit 선택 후 버튼 누르면 시뮬레이션 실행
 - 그래프 출력
+
+
+# 최종 
