@@ -6,6 +6,7 @@
     
     <body>
         <form action="http://127.0.0.1:5000/result" method="post">
+            <input type="hidden" name="flag" value="partinput">
             <input type="text" name="name" value="Name" onfocus="this.value=''"><br>
             <select name="type">
               <option value="promoter">Promoter</option>
@@ -18,12 +19,16 @@
         </form>
         
         Part list <br>
-        <ol> 
-        {% for i in result %} 
-            <li>{{i}} <input type="checkbox"> </li> 
+        <form action="http://127.0.0.1:5000/result" method="post">
+        <input type="hidden" name="flag" value="circuitinput">
+        <ul> 
+        {% for i in partlist %} 
+            <li>{{i}} <input type="checkbox" value={{i.split(' ')[0]}} name="partchk[]"> </li> 
         {% endfor %} 
-        </ol>
-  
+        </ul>
+        <input type="submit" value="send">
+        </form>
+      {{partchk}} 
     </body>
 </html>
 

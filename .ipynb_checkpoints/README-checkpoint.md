@@ -135,7 +135,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
  
 
 ## 태웅
-- modeling
+- modeling (odeint 함수 사용법)
 - part/circuit class에 정량적 값 저장할 변수 추가
 - circuit 선택 후 버튼 누르면 시뮬레이션 실행
 - 그래프 출력

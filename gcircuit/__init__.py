@@ -24,15 +24,30 @@ def circuit_design():
 def result():
     
     if request.method == 'POST':
-        name = request.form['name']
-        ptype = request.form['type']
-        seq = request.form['sequence']
-        f = open("C:\kribb\sasa\db.txt", 'a')
-        # random number generation (time)
-        data = "%s %s %s\n" % (name, ptype, seq)
-        f.write(data)
-        f.close()
-
+        circuitlist = ""
+        partlist = ""
+        flag = request.form['flag']
         with open("c:\kribb\sasa\db.txt") as f:
-            result = f.read().splitlines()
-        return render_template('gcircuitmain.html', result=result)
+            partlist = f.read().splitlines()
+        if len(partlist) == 0:
+            id=1
+        else:
+            id = int(partlist[len(partlist)-1].split(' ')[0])+1
+        
+        if flag == "partinput":
+            name = request.form['name']
+            ptype = request.form['type']
+            seq = request.form['sequence']
+            f = open("C:\kribb\sasa\db.txt", 'a')
+            # random number generation (time)
+            data = "%d %s %s %s\n" % (id, name, ptype, seq)
+            f.write(data)
+            f.close()
+            partlist.append(data)
+        
+        elif flag == "circuitinput":
+            circuitlist = request.form['partchk']
+        
+#         result = {'partlist':partlist, 'circuitlist':circuitlist}
+        print(circuitlist) 
+        return render_template('gcircuitmain.html', partlist=partlist, circuitlist=circuitlist)
