@@ -1,4 +1,4 @@
-# ============= 2020. 01. 13
+# ========== 2020. 01. 13 ==========
 
 ## 개발 환경 
 ```
@@ -76,7 +76,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - 파일 읽기 쓰기 전까지 코드 실행, 이해 노력
 
 
-# ============== 2020. 01. 14 
+# ========== 2020. 01. 14 ==========
 
 ## 클래스 만들기
 - class: circuit 
@@ -109,7 +109,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - Chapter 17  Graphics including GenomeDiagram
 
 
-# ============= 2020 01 15
+# ========== 2020 01 15 ==========
 
 - 시작할 때 명령프롬프트 창 2개 띄우기 (jupyter lab, flask)
 - flask app structure & run 
@@ -142,7 +142,9 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 - 그래프 출력
 
 
-# ========== 최종일 (2020.01.17) ==========
+# ========== 2020 01 16 ==========
+
+# ========== 2020.01.17 ==========
 
 - 각 분야 발표 약 10분 
   - 프로젝트 개요
