@@ -158,9 +158,24 @@ git add .
 git commit -m "message"
 git push
 ```
+- 특정 branch 로 옮기기 전 현재 branch의 코드를 잠시 저장하고 옮긴 후 데이터 받아오기 
+``` 
+git stash
+git stash list
+git checkout hw
+git fetch
+git merge
+```
+- 참고로 fetch 는 원격 저장소의 내용 확인, 병합은 하지 않음. 대신 원격 저장소의 최신 이력 확인시 사용
+- merge 는 병합, pull = fetch + merge 임
+
+
+
 
 ## 현우 (flask)
 - Part 조합으로 Circuit 제작 코딩 
+- html rendering 을 위해 mdbootstrap 사용 (https://mdbootstrap.com/education/bootstrap/quick-start/)
+- form submit은 모두 onclick 자바스크립트로 변경 (flag 변수 값 변경 후 submit)
 
 ## 용환 (biopython)
 - matplotlib 이용 part, circiut 서열과 위치 정보로 그래프 그리기 
