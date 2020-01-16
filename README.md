@@ -1,4 +1,5 @@
-# 각자 본인 branch 에서 clone 받아서 실행하고 코드 이해 하기 (현재 현우것만 완료)
+# 공지 
+# 각자 본인 branch 에서 clone 받아서 실행하고 코드 이해 하세요 (현재 현우것만 완료)
 ```
 git clone -b hw https://github.com/greendaygh/sasa.git
 ```
