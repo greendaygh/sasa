@@ -16,15 +16,28 @@
         <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="css/style.css">
     </head>
+    
+    <script>
+        function submit_form(formid, flagvalue) {
+            document.getElementById(formid).flag.value=flagvalue;
+            document.getElementById(formid).submit(); 
+        }
+        function submit_form_with_partno(formid, flagvalue, partno) {
+            document.getElementById(formid).partchk.value=partno;
+            document.getElementById(formid).flag.value=flagvalue;
+            document.getElementById(formid).submit(); 
+        }
+    </script>
     <body>
 
         <div class="container">
             <div class="row">
                 <div class="col-md-6"> 
+                <!-- upper left start -->
 
                     DNA Part  
-                    <form action="http://127.0.0.1:5000/result" method="post">
-                        <input type="hidden" name="flag" value="partinput">
+                    <form action="http://127.0.0.1:5000/result" id="partinputform" method="post">
+                        <input type="hidden" id="flag" name="flag" value="partinput">
                         
                         <!-- Table  -->
                         <table class="table table-borderless table-sm">
@@ -66,39 +79,46 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <button type="submit" class="btn btn-primary">Save part</button>
-                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('circuitform').submit();">Assembly</button>
-                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('display').submit();">Display</button>
-                                        
-                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deletealllistform').submit();">DeleteAL</button>
-                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deleteyourcircuitform').submit();">DeleteYC</button>
-                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deleteallcircuitform').submit();">DeleteAC</button>
                                     </th>
                                 </tr>
                             </tbody>
                         </table>
                     </form>
-
+                    
+                    <button type="button" class="btn btn-primary"  onclick="submit_form('partinputform', 'partinput')">Save part</button>
+                    <button type="button" class="btn btn-primary"  onclick="submit_form('circuitform', 'circuitassembly')">Assembly</button>
+                    <button type="button" class="btn btn-primary" onclick="submit_form('circuitform', 'resetpartdb')">Reset partdb</button>
+                    <button type="button" class="btn btn-primary" onclick="submit_form('circuitform', 'resetdb')">Reset db</button>
+                    <button type="button" class="btn btn-primary" onclick="submit_form('circuitform', 'resetcircuitdb')">Reset circuitdb</button>
+                    
+                <!-- upper left end -->
                 </div>
                 <div class="col-md-6">
-                 Images
-                 <img src="https://ssl.pstatic.net/tveta/libs/1267/1267998/b237f1c5801cbb514613_20200114142358044.png">
+                <!-- upper right start --> 
                     
+                 Images
+<!--                  <img src="https://ssl.pstatic.net/tveta/libs/1267/1267998/b237f1c5801cbb514613_20200114142358044.png"> -->
+                    
+                <!-- upper right end --> 
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6"> 
+                <!-- lower left start --> 
+                    
+                    
+                    
                     Part List
 
                     <form action="http://127.0.0.1:5000/result" method="post" id="circuitform">
-                        <input type="hidden" name="flag" value="circuitassembly">
+                        <input type="hidden" name="flag">
+                        <input type="hidden" name="partchk"> 
                         <!-- Table  -->
                         <table class="table table-bordered table-sm table-hover">
                             <!-- Table head -->
                             <thead>
                                 <tr>
-                                    <th>
-                                    </th>
+                                    <th>Number</th>
                                     <th>Name</th>
                                     <th>Type</th>
                                     <th>Sequence</th>
@@ -114,9 +134,7 @@
                                     <th scope="row">
                                         <!-- Default unchecked -->
                                         <div class="custom-control custom-checkbox">
-<!--                                             <input type="checkbox" class="custom-control-input" id="tableDefaultCheck{{p[0]}}" name="partchk" value="{{p[0]}}"> -->
-<!--                                             <label class="custom-control-label" for="tableDefaultCheck{{p[0]}}"></label> -->
-                                            <input type="submit" value="{{p[0]}}" name="partchk"> 
+                                            <input type="button" onclick="submit_form_with_partno('circuitform', 'circuitinput', '{{p[0]}}')" value="{{p[0]}}"> 
                                         </div>
                                     </th>
                                     <td>{{p[1]}}</td>
@@ -129,17 +147,53 @@
                         </table>
                         <!-- Table  --> 
                     </form>
+                <!-- lower left end --> 
                 </div>
-
-
                 <div class="col-md-6">
-                    Circuit List
-                            {{circuitlist}}
+                <!-- lower right start --> 
+                    Circuit List<br>
+                    <table class="table table-bordered table-sm table-hover">
+                            <!-- Table head -->
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Sequence</th>
+                                </tr>
+                            </thead>
+                            <!-- Table head -->
 
-<!--                     {% for i in circuitlist %} 
-                    {{i}}
-                    {% endfor %} -->
 
+                            <!-- Table body -->
+                            {% for p in circuitlist %} 
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <!-- Default unchecked -->
+                                        <div class="custom-control custom-checkbox">
+                                             <center>{{p.split(' ')[0]}}</center>
+                                        </div>
+                                    </th>
+                                    <td>{{p.split(' ')[1]}}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %} 
+                            <!-- Table body -->
+                        </table>
+                        <!-- Table  -->
+                    
+                    
+                    
+<!--                     <ul>
+                    {% for i in cirdata %} 
+                    <li> {{i.split(' ')[1]}}
+                    </li>
+                    {% endfor %} 
+                    </ul> -->
+                    Your circuit <br>
+                    <div style="border:1px solid; padding:10px;">
+                    {{cirdata}}
+
+                <!-- lower right end --> 
                 </div>
             </div>
         </div>
@@ -159,16 +213,6 @@
         <!-- Your custom scripts (optional) -->
         <script type="text/javascript"></script>
         
-        <form action="http://127.0.0.1:5000/display" id="display" method="post">
-            <input type="hidden" name="flag" value="display">
-        </form>
-        
-        
-        
-        <form action="http://127.0.0.1:5000/result" id="deletealllistform" method="post"><input type="hidden" value="Delete all list" name="flag"></form>
-        <form action="http://127.0.0.1:5000/result" id="deleteyourcircuitform" method="post"><input type="hidden" value="Delete your circuit" name="flag"></form>
-        <form action="http://127.0.0.1:5000/result" id="deleteallcircuitform" method="post"><input type="hidden" value="Delete all circuit" name="flag"></form>
-       
-
     </body>
 </html>
+

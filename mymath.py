@@ -3,3 +3,6 @@ def mycalc(x):
     for i in x:
         sum = sum + i
     return(sum)
+
+
+

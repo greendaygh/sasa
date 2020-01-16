@@ -1,12 +1,3 @@
-# 공지 
-# 각자 본인 branch 에서 clone 받아서 실행하고 코드 이해 하세요 (현재 현우것만 완료)
-```
-git clone -b hw https://github.com/greendaygh/sasa.git
-```
-
-
-
-
 # ========== 2020. 01. 13 ==========
 
 ## 개발 환경 
@@ -177,8 +168,6 @@ git merge
 ```
 - 참고로 fetch 는 원격 저장소의 내용 확인, 병합은 하지 않음. 대신 원격 저장소의 최신 이력 확인시 사용
 - merge 는 병합, pull = fetch + merge 임
-
-
 
 
 ## 현우 (flask)
