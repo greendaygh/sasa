@@ -1,15 +1,23 @@
 from flask import Flask, render_template, request
+import os 
 
 import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
+MODELING_FOLDER = os.path.join('static')
 
+
+def dP_dt(P, t):
+    a,b,c,d = 10,5,20,5
+    return [(a - b*P[0]), (c*P[0] - d*P[1])]
 
 app = Flask(__name__,
            static_url_path='', 
            static_folder='static',
            template_folder='templates')
+
+app.config['UPLOAD_FOLDER'] = MODELING_FOLDER
 
 
 # @app.route("/")
@@ -87,23 +95,23 @@ def result():
 #         print([i for i in circuitlist])
         return render_template('gcircuitmain.html', partlist=partlist_all_short, circuitlist=circuitlist)
 
-
 @app.route('/modeling',methods = ['POST', 'GET'])
 # a,b,c,d = 10,5,20,5
-def dP_dt(P, t):
-    return [(10 - 5*P[0]), (20*P[0] - 5*P[1])]
+def modeling():
+    ts = np.linspace(0, 3, 100)
+    P0 = [1.5, 1.0]
+    Ps = odeint(dP_dt, P0, ts)
+    pro = Ps[:,0]
+    rna = Ps[:,1]
 
-ts = np.linspace(0, 3, 100)
-P0 = [1.5, 1.0]
-Ps = odeint(dP_dt, P0, ts)
-pro = Ps[:,0]
-rna = Ps[:,1]
+    plt.plot(ts, pro, "-", label="Protein")
+    plt.plot(ts, rna, "-", label="mRNA")
+    plt.xlabel("Time")
+    plt.ylabel("Value")
+    plt.legend();
 
-plt.plot(ts, pro, "-", label="Protein")
-plt.plot(ts, rna, "-", label="mRNA")
-plt.xlabel("Time")
-plt.ylabel("Value")
-plt.legend();
-
-fig=plt.gcf()
-fig.savefig('myfile.png',dpi=fig.dpi)
+    fig=plt.gcf()
+    fig.savefig('gcircuit/static/images/myfile.png',dpi=fig.dpi)
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'myfile.png')
+    return render_template('modeling.html', image_file=full_filename)
+    
