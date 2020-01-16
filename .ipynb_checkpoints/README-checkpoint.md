@@ -1,9 +1,17 @@
-# 공지 
-# 각자 본인 branch 에서 clone 받아서 실행하고 코드 이해 하세요 (현재 현우것만 완료)
+# == 공지 ==
+## 각자 다른 app 개발하는 것으로
+## 본인 app source code는 github 각자의 branch에 저장됨
+## 본인 branch에서 clone 받아서 실행 
+## 코드 이해 필요 (현재 현우, 태웅 code 정리 완료)
+### 현우
 ```
 git clone -b hw https://github.com/greendaygh/sasa.git
 ```
-
+### 태웅
+```
+git clone -b tu https://github.com/greendaygh/sasa.git
+```
+### 용환 - 내일 오전에..
 
 
 
