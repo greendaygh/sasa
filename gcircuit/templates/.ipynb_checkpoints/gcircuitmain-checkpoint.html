@@ -1,34 +1,151 @@
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>11HTML form test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Material Design for Bootstrap</title>
+        <!-- MDB icon -->
+        <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Material Design Bootstrap -->
+        <link rel="stylesheet" href="css/mdb.min.css">
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="css/style.css">
     </head>
-    
     <body>
-        <form action="http://127.0.0.1:5000/result" method="post">
-            <input type="hidden" name="flag" value="partinput">
-            <input type="text" name="name" value="Name" onfocus="this.value=''"><br>
-            <select name="type">
-              <option value="promoter">Promoter</option>
-              <option value="rbs">RBS</option>
-              <option value="cds">CDS</option>
-              <option value="terminator">Terminator</option>
-            </select><br>
-            <input type="text" name="sequence" value="Sequence" onfocus="this.value=''"><br>
-            <input type="submit" value="send">
-        </form>
-        
-        Part list <br>
-        <form action="http://127.0.0.1:5000/result" method="post">
-        <input type="hidden" name="flag" value="circuitinput">
-        <ul> 
-        {% for i in partlist %} 
-            <li>{{i}} <input type="checkbox" value={{i.split(' ')[0]}} name="partchk[]"> </li> 
-        {% endfor %} 
-        </ul>
-        <input type="submit" value="send">
-        </form>
-      {{partchk}} 
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"> 
+
+                    DNA Part  
+                    <form action="http://127.0.0.1:5000/result" method="post">
+                        <input type="hidden" name="flag" value="partinput">
+                        
+                        <!-- Table  -->
+                        <table class="table table-borderless table-sm">
+                            <!-- Table head -->
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Type</label>
+                                            </div>
+                                            <select class="browser-default custom-select" name="type" id="inputGroupSelect01">
+                                                <option selected>Choose...</option>
+                                                <option value="promoter">Promoter</option>
+                                                <option value="rbs">RBS</option>
+                                                <option value="cds">CDS</option>
+                                                <option value="terminator">Terminator</option>
+                                            </select>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Sequence</label>
+                                            <textarea class="form-control rounded-0" name="sequence" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <button type="submit" class="btn btn-primary">Save part</button>
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('circuitform').submit();">Assembly</button>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+                <div class="col-md-6"> Test</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"> 
+                    Part List
+
+                    <form action="http://127.0.0.1:5000/result" method="post" id="circuitform">
+                        <input type="hidden" name="flag" value="circuitassembly">
+                        <!-- Table  -->
+                        <table class="table table-bordered table-sm table-hover">
+                            <!-- Table head -->
+                            <thead>
+                                <tr>
+                                    <th>
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Sequence</th>
+                                </tr>
+                            </thead>
+                            <!-- Table head -->
+
+
+                            <!-- Table body -->
+                            {% for p in partlist %} 
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <!-- Default unchecked -->
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="tableDefaultCheck{{p[0]}}" name="partchk" value="{{p[0]}}">
+                                            <label class="custom-control-label" for="tableDefaultCheck{{p[0]}}"></label>
+                                        </div>
+                                    </th>
+                                    <td>{{p[1]}}</td>
+                                    <td>{{p[2]}}</td>
+                                    <td>{{p[3]}}</td> 
+                                </tr>
+                            </tbody>
+                            {% endfor %} 
+                            <!-- Table body -->
+                        </table>
+                        <!-- Table  --> 
+                    </form>
+                </div>
+
+
+                <div class="col-md-6">
+                    Circuit List
+                    {% for i in circuitlist %} 
+                    {{i}}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- End your project here-->
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Your custom scripts (optional) -->
+        <script type="text/javascript"></script>
+
     </body>
 </html>
-

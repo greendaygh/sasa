@@ -143,6 +143,7 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 
 
 # ========== 2020 01 16 ==========
+- MDBootstrap 사용 (https://mdbootstrap.com/education/bootstrap/quick-start/)
 
 # ========== 2020.01.17 ==========
 
