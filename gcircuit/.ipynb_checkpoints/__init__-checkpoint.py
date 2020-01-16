@@ -5,12 +5,24 @@ app = Flask(__name__,
            static_folder='static',
            template_folder='templates')
 
-
 # @app.route("/")
 # def helloworld():
 #     return "Hellow world!!"
 
 
+def reset_db():
+    a = open("c:\kribb\sasa\partdb.txt", mode='w')
+    a.close()
+    
+def reset_circuit():
+    b = open("c:\kribb\sasa\circuit.txt", mode='w')
+    b.close() 
+    
+def reset_circuitdb():
+    e = open("c:\kribb\sasa\circuitdb.txt", mode='w')
+    e.close() 
+    
+    
 @app.route("/hello")
 def helloworld_from_html():
     return render_template('hello.html')
@@ -76,7 +88,29 @@ def result():
         
         # circuit assembly 
         elif flag == "circuitassembly":
-            circuitlist = request.form.getlist('partchk')
+            #circuitlist = request.form.getlist('partchk')
+            r = open("c:\kribb\sasa\db.txt", mode='rt')
+            y = open("c:\kribb\sasa\circuit.txt", mode='a')
+            part1 = (r.readlines())[int(request.form["partchk"])- 1].split(' ')[3]
+            y.write(part1)
+            r.close()
+            y.close()
+        elif flag == "Delete all list":
+            reset_db()
+        elif flag == "Delete your circuit":
+            reset_circuit()
+        elif flag == "Delete all circuit":
+            reset_circuitdb()
+            
+        c = open("c:\kribb\sasa\circuitdb.txt", mode='rt')
+        cirdata = c.readlines()
+        c.close()
             
 #         print([i for i in circuitlist])
         return render_template('gcircuitmain.html', partlist=partlist_all_short, circuitlist=circuitlist)
+
+
+@app.route('/modeling',methods = ['POST', 'GET'])
+def modeling():
+        return render_template('modeling.html')
+    

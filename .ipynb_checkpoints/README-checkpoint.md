@@ -143,11 +143,40 @@ https://github.com/greendaygh/bioengml/blob/master/%ED%8A%9C%ED%86%A0%EB%A6%AC%E
 
 
 # ========== 2020 01 16 ==========
-- MDBootstrap 사용 (https://mdbootstrap.com/education/bootstrap/quick-start/)
+- MDBootstrap 사용 인터페이스 개선 (https://mdbootstrap.com/education/bootstrap/quick-start/)
+- 특정 branch git clone 할 때 (sasa 상위 디렉토리에서 실행)
+```
+git clone -b hw https://github.com/greendaygh/sasa.git
+```
+- 특정 branch git push 할 때
+```
+git status
+git branch
+git checkout yh
+git branch
+git add .
+git commit -m "message"
+git push
+```
+
+## 현우 (flask)
+- Part 조합으로 Circuit 제작 코딩 
+
+## 용환 (biopython)
+- matplotlib 이용 part, circiut 서열과 위치 정보로 그래프 그리기 
+
+## 태웅 (dynamics modeling)
+- modeling 코드 flask에 적용 
+
+
 
 # ========== 2020.01.17 ==========
 
-- 각 분야 발표 약 10분 
-  - 프로젝트 개요
-  - 각자 맡은 분야 (개요, 설치, 내용, 결과)
+- 최종 발표 
+  - 시간: 오후 1시 (생명연 연구동 세미나실)
+  - 각 10분 내외 (ppt 준비 및 발표)
+  - 프로젝트 공통 title:  합성생물학을 위한 유전자회로 설계 툴 개발
+  - 목표: 각자 맡은 분야 목표
+  - 배경지식: 각자 맡은 분야 개요/배경 (인터넷 검색)
+  - 수행내용 및 결과: 각자 맡은 분야 (내용, 결과, 코드/스크립트 설명 가능)
   - 느낀점 

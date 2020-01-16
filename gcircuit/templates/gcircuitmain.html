@@ -68,6 +68,11 @@
                                     <th scope="row">
                                         <button type="submit" class="btn btn-primary">Save part</button>
                                         <button type="button" class="btn btn-primary" onclick="document.getElementById('circuitform').submit();">Assembly</button>
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('display').submit();">Display</button>
+                                        
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deletealllistform').submit();">DeleteAL</button>
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deleteyourcircuitform').submit();">DeleteYC</button>
+                                        <button type="button" class="btn btn-primary" onclick="document.getElementById('deleteallcircuitform').submit();">DeleteAC</button>
                                     </th>
                                 </tr>
                             </tbody>
@@ -75,7 +80,11 @@
                     </form>
 
                 </div>
-                <div class="col-md-6"> Test</div>
+                <div class="col-md-6">
+                 Images
+                 <img src="https://ssl.pstatic.net/tveta/libs/1267/1267998/b237f1c5801cbb514613_20200114142358044.png">
+                    
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6"> 
@@ -105,8 +114,9 @@
                                     <th scope="row">
                                         <!-- Default unchecked -->
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="tableDefaultCheck{{p[0]}}" name="partchk" value="{{p[0]}}">
-                                            <label class="custom-control-label" for="tableDefaultCheck{{p[0]}}"></label>
+<!--                                             <input type="checkbox" class="custom-control-input" id="tableDefaultCheck{{p[0]}}" name="partchk" value="{{p[0]}}"> -->
+<!--                                             <label class="custom-control-label" for="tableDefaultCheck{{p[0]}}"></label> -->
+                                            <input type="submit" value="{{p[0]}}" name="partchk"> 
                                         </div>
                                     </th>
                                     <td>{{p[1]}}</td>
@@ -124,9 +134,11 @@
 
                 <div class="col-md-6">
                     Circuit List
-                    {% for i in circuitlist %} 
+                            {{circuitlist}}
+
+<!--                     {% for i in circuitlist %} 
                     {{i}}
-                    {% endfor %}
+                    {% endfor %} -->
 
                 </div>
             </div>
@@ -146,6 +158,17 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Your custom scripts (optional) -->
         <script type="text/javascript"></script>
+        
+        <form action="http://127.0.0.1:5000/display" id="display" method="post">
+            <input type="hidden" name="flag" value="display">
+        </form>
+        
+        
+        
+        <form action="http://127.0.0.1:5000/result" id="deletealllistform" method="post"><input type="hidden" value="Delete all list" name="flag"></form>
+        <form action="http://127.0.0.1:5000/result" id="deleteyourcircuitform" method="post"><input type="hidden" value="Delete your circuit" name="flag"></form>
+        <form action="http://127.0.0.1:5000/result" id="deleteallcircuitform" method="post"><input type="hidden" value="Delete all circuit" name="flag"></form>
+       
 
     </body>
 </html>
