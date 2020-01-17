@@ -12,7 +12,10 @@ git clone -b hw https://github.com/greendaygh/sasa.git
 ```
 git clone -b tu https://github.com/greendaygh/sasa.git
 ```
-#### 용환 - 내일 오전에..
+#### 용환 
+```
+git clone -b yh https://github.com/greendaygh/sasa.git
+```
 
 ### 최종 발표 준비
 - 시간: 오후 1시 (생명연 연구동 세미나실)
