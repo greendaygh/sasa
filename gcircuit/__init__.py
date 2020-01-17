@@ -120,7 +120,7 @@ def count_Length():
 
 @app.route('/display', methods=['GET', 'POST'])
 def save():
-    if request.method=='GET':
+    if request.method=='POST':
         apro=Part(1, "AGC", "Ap", "Promoter")
         arbs=Part(2, "TTG", "Ar", "RBS")
         acds=Part(3, "ACC", "Ac", "CDS")
@@ -135,4 +135,6 @@ def save():
         acircuit.make_seq_figure()
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'genegraphics.png')
         return render_template("graphic_test.html", image_file_name=full_filename) 
+    else:
+        return render_template("graphic_test.html", image_file_name="") 
 
