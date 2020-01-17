@@ -21,7 +21,7 @@ app.config.from_object(__name__)
 class Part:
     def __init__(self, id, seq, name, type) :
         self.id= id
-        self.seq= seq
+        self.seq= Seq(seq)
         self.name= name
         self.type= type
         self.location = ""
@@ -105,7 +105,9 @@ def show_gene(fig2, typ, leng, location):
         color='g'
         ))
     return None
-def locate_geneAp(leng, location):
+
+def locate_geneAp(fig2, leng, location):
+        ax2 = fig2.add_subplot(1,1,1)
         ax2.add_patch(
         patches.Rectangle(
         (location/100, 0.2),
@@ -114,7 +116,8 @@ def locate_geneAp(leng, location):
         color='c'
         #색에서 k가 검정, b 파랑, g 초록, c 청록(시앙!), m 마젠타, r 빨강, w 흰색, y 노란(?)색, 
         ) ) 
-def locate_geneBr(leng, location):
+def locate_geneBr(fig2, leng, location):
+        ax2 = fig2.add_subplot(1,1,1)
         ax2.add_patch(
         patches.Rectangle(
         (location/100, 0.2),
@@ -123,7 +126,8 @@ def locate_geneBr(leng, location):
         color='b'
         #색에서 k가 검정, b 파랑, g 초록, c 청록(시앙!), m 마젠타, r 빨강, w 흰색, y 노란(?)색, 
         ) )
-def locate_geneBt(leng, location):
+def locate_geneBt(fig2, leng, location):
+        ax2 = fig2.add_subplot(1,1,1)
         ax2.add_patch(
         patches.Rectangle(
         (location/100, 0.2),
@@ -132,7 +136,8 @@ def locate_geneBt(leng, location):
         color='m'
         #색에서 k가 검정, b 파랑, g 초록, c 청록(시앙!), m 마젠타, r 빨강, w 흰색, y 노란(?)색, 
         ) )
-def locate_geneCr(leng, location):
+def locate_geneCr(fig2, leng, location):
+        ax2 = fig2.add_subplot(1,1,1)
         ax2.add_patch(
         patches.Rectangle(
         (location/100, 0.2),
@@ -157,31 +162,37 @@ def count_Length():
 @app.route('/display', methods=['GET', 'POST'])
 def save():
     if request.method=='POST':
-        apro=Part(1, "AGC", "Ap", "Promoter")
-        arbs=Part(2, "TTG", "Ar", "RBS")
-        acds=Part(3, "ACC", "Ac", "CDS")
-        brbs=Part(4, "CCC", "Bc", "CDS")
-        crbs=Part(6, "TAG", "Cr", "RBS")
-        bcds=Part(7, "ATC", "Bc", "CDS")
-        drbs=Part(8, "CTC", "Dc", "CDS")
-        ater=Part(9, "ATT", "At", "Terminator")
-        bter=Part(9, "CTA", "At", "Terminator")
+#         apro=Part(1, "AGC", "Ap", "Promoter")
+#         arbs=Part(2, "TTG", "Ar", "RBS")
+#         acds=Part(3, "ACC", "Ac", "CDS")
+#         brbs=Part(4, "CCC", "Bc", "CDS")
+#         crbs=Part(6, "TAG", "Cr", "RBS")
+#         bcds=Part(7, "ATC", "Bc", "CDS")
+#         drbs=Part(8, "CTC", "Dc", "CDS")
+#         ater=Part(9, "ATT", "At", "Terminator")
+#         bter=Part(9, "CTA", "At", "Terminator")
         acircuit=Circuit(1, "circuit A", "biosensor")    
-
+        apro = Part(request.form.get("id1"),request.form.get("seq1"),request.form.get("name1"),request.form.get("type1"))
+        arbs = Part(request.form.get("id2"),request.form.get("seq2"),request.form.get("name2"),request.form.get("type2"))
+        acds = Part(request.form.get("id3"),request.form.get("seq3"),request.form.get("name3"),request.form.get("type3"))
+        aterm = Part(request.form.get("id4"),request.form.get("seq4"),request.form.get("name4"),request.form.get("type4"))
+        apro.show_sequence()
+        
         mAp = motifs.create([apro.seq])
-        mBr = motifs.create([brbs.seq])
-        mBt = motifs.create([bter.seq])
-        mCr = motifs.create([crbs.seq])
-        acircuit.set_parts([apro,arbs,acds,apro,arbs,acds,acds,brbs,crbs,bcds,drbs,brbs,crbs, bcds, drbs, ater])
+        mBr = motifs.create([arbs.seq])
+        mBt = motifs.create([acds.seq])
+        mCr = motifs.create([aterm.seq])
+        acircuit.set_parts([apro, arbs, acds, aterm])
         acircuit.set_sequence()
+        fig2 = plt.figure(figsize=(4,4))
         for pos, seq in mAp.instances.search(acircuit.seq):         
-            locate_geneAp(len(seq),(pos))
+            locate_geneAp(fig2, len(seq),(pos))
         for pos, seq in mBr.instances.search(acircuit.seq):
-            locate_geneBr(len(seq),(pos))
+            locate_geneBr(fig2, len(seq),(pos))
         for pos, seq in mBt.instances.search(acircuit.seq):
-            locate_geneBt(len(seq),(pos))
+            locate_geneBt(fig2, len(seq),(pos))
         for pos, seq in mCr.instances.search(acircuit.seq):
-            locate_geneCr(len(seq),(pos))
+            locate_geneCr(fig2, len(seq),(pos))
         fig2.savefig("gcircuit/static/images/genegraphics2.png",format="png")
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'genegraphics2.png')
         return render_template("graphic_test.html", image_file_name=full_filename) 
